@@ -52,8 +52,8 @@ jobs:
           rm -rf .git
           export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
           export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
-          git config --global user.email "Cookie Cutter"
-          git config --global user.name "<>"
+          git config --global user.name "Cookie Cutter"
+          git config --global user.email "<>"
           # Run cookiecutter
           cookiecutter gh:mysociety/cookie_notebook --no-input \
             project_name=$REPO_NAME \
