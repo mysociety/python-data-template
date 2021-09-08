@@ -45,10 +45,12 @@ jobs:
       - name: Rebuild contents using cookiecutter
         env:
           INFO: ${{ steps.fetch-repo-and-user-details.outputs.result }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Delete this workflow:
           rm -rf .github
           rm -rf .git
+          export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
           export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
           # Run cookiecutter
           cookiecutter gh:mysociety/cookie_notebook --no-input \
@@ -61,11 +63,6 @@ jobs:
           mv $REPO_NAME/.gitignore .
           mv $REPO_NAME/.gitattributes .
           mv $REPO_NAME/.git .
-          # Now remove the empty datasette-x directory:
+          git remote add origin https://$GITHUB_ACTOR:$TOKEN@github.com/$GITHUB_REPOSITORY.git
+          git push --force --set-upstream origin main
 
-
-      - name: Force push new repo contents
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Initial library structure"
-          push_options: --force
