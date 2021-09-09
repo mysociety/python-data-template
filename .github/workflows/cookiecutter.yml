@@ -58,6 +58,7 @@ jobs:
           cookiecutter gh:mysociety/cookie_notebook --no-input \
             project_name=$REPO_NAME \
             repo_name=$REPO_NAME \
+            github_id=$GITHUB_REPOSITORY \
             description="$(echo $INFO | jq -r .repository.description)"
           # Move generated content to root directory of repo
           mv $REPO_NAME/* .
