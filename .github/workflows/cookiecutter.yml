@@ -69,7 +69,7 @@ jobs:
           git remote add origin https://$GITHUB_ACTOR:$TOKEN@github.com/$GITHUB_REPOSITORY.git
           git push --force --set-upstream origin main
 
-      - name: "enbable github pages"
+      - name: "enable github pages"
         uses: actions/github-script@v6
         with:
           script: |
