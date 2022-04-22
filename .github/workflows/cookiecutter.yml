@@ -55,7 +55,7 @@ jobs:
           git config --global user.name "Cookie Cutter"
           git config --global user.email "<>"
           # Run cookiecutter
-          cookiecutter gh:mysociety/cookie_notebook --no-input \
+          cookiecutter gh:mysociety/cookie_data_repo --no-input \
             project_name=$REPO_NAME \
             repo_name=$REPO_NAME \
             github_id=$GITHUB_REPOSITORY \
