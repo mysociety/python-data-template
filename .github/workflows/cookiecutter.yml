@@ -73,7 +73,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            github.request('POST /repos/{owner}/{repo}/pages', {
+            result = await github.request('POST /repos/{owner}/{repo}/pages', {
               owner: context.repo.owner,
               repo: context.repo.repo,
               source: {
